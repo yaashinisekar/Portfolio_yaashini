@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 22% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 22% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 265 89% 70%;
+    --primary-foreground: 230 25% 7%;
+    --primary-glow: 280 95% 75%;
+
+    --secondary: 195 95% 55%;
+    --secondary-foreground: 230 25% 7%;
+
+    --accent: 165 85% 55%;
+    --accent-foreground: 230 25% 7%;
+
+    --muted: 230 18% 16%;
+    --muted-foreground: 220 15% 70%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 18%;
+    --ring: 265 89% 70%;
+
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(265 89% 70%), hsl(195 95% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(280 95% 75%), hsl(165 85% 55%));
+    --gradient-mesh: radial-gradient(at 20% 20%, hsl(265 89% 70% / 0.25) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(195 95% 55% / 0.2) 0px, transparent 50%),
+                     radial-gradient(at 80% 80%, hsl(280 95% 75% / 0.2) 0px, transparent 50%),
+                     radial-gradient(at 20% 80%, hsl(165 85% 55% / 0.15) 0px, transparent 50%);
+
+    --glass-bg: hsl(230 22% 12% / 0.6);
+    --glass-border: hsl(230 30% 40% / 0.25);
+
+    --shadow-glow: 0 0 60px hsl(265 89% 70% / 0.35);
+    --shadow-elegant: 0 20px 50px -20px hsl(230 50% 2% / 0.6);
+    --shadow-card: 0 10px 30px -10px hsl(265 89% 30% / 0.3);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .light {
+    --background: 220 30% 98%;
+    --foreground: 230 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 10%;
+    --primary: 265 75% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 80% 65%;
+    --secondary: 195 85% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 165 75% 40%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 220 20% 92%;
+    --muted-foreground: 230 15% 35%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 265 75% 55%;
+    --glass-bg: hsl(0 0% 100% / 0.6);
+    --glass-border: hsl(230 30% 60% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(hsl(var(--primary)), hsl(var(--secondary)));
+    border-radius: 10px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-text-alt {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-secondary);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-12;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+  .animate-blob {
+    animation: blob 12s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
