@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Mail, ArrowDown } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
+
 
 const roles = [
   "Information Technology Student",
@@ -80,21 +80,7 @@ export const Hero = () => {
           Currently pursuing B.Tech IT @ SKCET.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-10"
-        >
-          <Button
-            size="lg"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="bg-gradient-primary hover:opacity-90 text-primary-foreground rounded-full px-8 h-12 font-semibold shadow-lg shadow-primary/30 hover:scale-105 transition-all"
-          >
-            <Mail className="mr-2" size={18} /> Get in touch
-          </Button>
 
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -120,16 +106,7 @@ export const Hero = () => {
           ))}
         </motion.div>
 
-        <motion.button
-          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ delay: 1.2, y: { repeat: Infinity, duration: 2 } }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary"
-          aria-label="Scroll down"
-        >
-          <ArrowDown size={24} />
-        </motion.button>
+
       </div>
     </section>
   );
