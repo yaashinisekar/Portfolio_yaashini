@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Download, Mail, ArrowDown } from "lucide-react";
+import { Mail, ArrowDown } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
@@ -93,16 +93,7 @@ export const Hero = () => {
           >
             <Mail className="mr-2" size={18} /> Get in touch
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            asChild
-            className="rounded-full px-8 h-12 glass border-primary/30 hover:border-primary hover:bg-primary/10 hover:scale-105 transition-all"
-          >
-            <a href="/resume.pdf" download>
-              <Download className="mr-2" size={18} /> Download Resume
-            </a>
-          </Button>
+
         </motion.div>
 
         <motion.div
